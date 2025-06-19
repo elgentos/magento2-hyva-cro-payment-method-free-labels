@@ -2,9 +2,17 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"
 >
-    <referenceBlock name="checkout.payment.methods">
-        <action method="setTemplate">
-            <argument name="template" xsi:type="string">Elgentos_HyvaCROPaymentMethodFreeLabels::checkout/payment/method-list.phtml</argument>
-        </action>
-    </referenceBlock>
+    <body>
+        <referenceContainer name="magewire.plugin.scripts">
+            <block name="checkout.payment.method-list"
+                   template="Elgentos_HyvaCROPaymentMethodFreeLabels::checkout/payment/method-list-csp-js.phtml"
+            />
+        </referenceContainer>
+
+        <referenceBlock name="checkout.payment.methods">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Elgentos_HyvaCROPaymentMethodFreeLabels::checkout/payment/method-list.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
 </page>

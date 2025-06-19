@@ -1,0 +1,37 @@
+<?php
+/**
+ * Hyvä Themes - https://hyva.io
+ * Copyright © Hyvä Themes 2020-present. All rights reserved.
+ * This product is licensed per Magento install
+ * See https://hyva.io/license
+ */
+
+declare(strict_types=1);
+
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\Theme\ViewModel\HyvaCsp;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+/** @var ViewModelRegistry $viewModels */
+/** @var HyvaCsp $hyvaCsp */
+
+/** Generated with hyva-csp-helper.php */
+?>
+<script>
+function triggerCeckoutPaymentActivateEvent() {
+    const el = this.$el,
+          wire = this.$wire;
+   return {
+        init() {
+            if(el.dataset.method && document.getElementById('payment-method-list')) {
+                window.dispatchEvent(new CustomEvent('checkout:payment:method-activate', { detail: { method: el.dataset.method} }))
+            }
+        }
+    }
+}
+window.addEventListener('alpine:init', () => Alpine.data('triggerCeckoutPaymentActivateEvent', triggerCeckoutPaymentActivateEvent), {once: true});
+</script>
+<?php $hyvaCsp->registerInlineScript() ?>
